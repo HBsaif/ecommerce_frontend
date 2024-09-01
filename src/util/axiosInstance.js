@@ -3,7 +3,8 @@ import axios from 'axios';
 
 // Create an Axios instance with default settings
 const axiosInstance = axios.create({
-  baseURL: 'https://ecommerce-production-73b5.up.railway.app/v1', // Replace with your API base URL
+  // baseURL: 'https://ecommerce-production-73b5.up.railway.app/v1', // Replace with your API base URL
+  baseURL: 'http://localhost:8080/v1',
   timeout: 100000, // Optional: Set a timeout (in milliseconds)
   headers: {
     'Content-Type': 'application/json',

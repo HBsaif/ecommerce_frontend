@@ -31,7 +31,9 @@ function Login() {
             setShowLoading(false);
             if(response.data){
                 if(response.data.status==='SUCCESS'){
-                    navigate('/');
+                    console.log("Login success...")
+                    localStorage.setItem('token', response.data.data.token);
+                    navigate("/admin-dashboard");
                 }else{
                     setShowError(true);
                     setErrorMessage("DEFAULT ERROR MESSEGE");
