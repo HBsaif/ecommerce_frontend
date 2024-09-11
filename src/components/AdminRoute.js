@@ -1,26 +1,23 @@
 
-import { Navigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
+import { Navigate } from 'react-router-dom';
 
 
 const AdminRoute = ({ children }) => {
-    console.log("Admin route enter...")
-    const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
-    console.log(token)
+    const accessToken = localStorage.getItem('accessToken'); // Assuming accessToken is stored in localStorage
+    console.log(accessToken)
     let userRole = '';
 
-    if (token) {
-        const decodedToken = jwtDecode(token);
-        console.log(decodedToken); // To check the structure of the decoded token
-        userRole = decodedToken.roles && decodedToken.roles.includes('ADMIN') ? 'ADMIN' : 
-                   decodedToken.roles.includes('MODERATOR') ? 'MODERATOR' : '';
+    if (accessToken) {
+        const decodedaccessToken = jwtDecode(accessToken);
+        userRole = decodedaccessToken.roles && decodedaccessToken.roles.includes('ADMIN') ? 'ADMIN' : 
+                   decodedaccessToken.roles.includes('MODERATOR') ? 'MODERATOR' : '';
     }
     
 
     // If not logged in or role isn't ADMIN/MODERATOR, redirect to login page
-    if (!token || (userRole !== 'ADMIN' && userRole !== 'MODERATOR')) {
-        console.log("No admin..")
-        return <Navigate to="/test" />;
+    if (!accessToken || (userRole !== 'ADMIN' && userRole !== 'MODERATOR')) {
+        return <Navigate to="/login" />;
     }
 
     // If the user is authorized, render the children (admin dashboard components)

@@ -1,7 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types'; // Import PropTypes
-import Header from './header';
+import React from 'react';
 import Footer from './footer';
+import Header from './header';
 function Layout({ children }) {
     return (
         <div>

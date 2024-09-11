@@ -1,26 +1,40 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
+import axiosInstance from '../util/axiosInstance';
+import './css/Sidebar.css'; // Assuming you are putting the CSS in a separate file
 const Sidebar = () => {
+
+    const allProducts = ()=>{
+        console.log("ALL PRODUCTS.");
+
+        axiosInstance.get('/api/products').then((response) => {
+            console.log(response.data);
+        }).catch((err) => {
+            console.log(err.message);
+
+        })
+    }
+
+    const logout = ()=>{
+        localStorage.clear();
+    }
     return (
         <div className="sidebar">
-            <h2>Admin Dashboard</h2>
-            <ul>
-                <li>
-                    <Link to="/admin/products">Manage Products</Link>
-                </li>
-                <li>
-                    <Link to="/admin/categories">Manage Categories</Link>
-                </li>
-                <li>
-                    <Link to="/admin/add-product">Add Product</Link>
-                </li>
-                <li>
-                    <Link to="/admin/add-category">Add Category</Link>
-                </li>
+            <div className="sidebar-logo">
+                <h2>Admin Panel</h2>
+            </div>
+            <ul className="sidebar-menu">
+                <li><a href="/admin-dashboard">Dashboard</a></li>
+                <li><a href="/admin-products">Products</a></li>
+                <li><a href="/admin-categories">Categories</a></li>
+                <li><a href="/admin-orders">Orders</a></li>
+                <li><a href="/admin-users">Users</a></li>
+                <li><a href="/admin-settings">Settings</a></li>
+                
             </ul>
+            <button onClick={allProducts}>All Products</button>
+            <button onClick={logout}>Logout</button>
         </div>
     );
-};
+}
 
 export default Sidebar;

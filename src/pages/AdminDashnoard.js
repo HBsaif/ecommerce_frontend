@@ -1,13 +1,14 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
-import { Outlet } from 'react-router-dom';
+import '../components/css/AdminDashboard.css';
 
 const AdminDashboard = () => {
     return (
         <div className="admin-dashboard">
             <Sidebar />
-            <div className="content">
-                <Outlet /> {/* This will render the nested routes, like Product Management or Add Product */}
+            <div className="dashboard-content">
+                <h1>Welcome to the Admin Dashboard</h1>
+                {/* Add your dashboard content here */}
             </div>
         </div>
     );

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import axiosInstance from "../util/axiosInstance";
-import { loginApiUrl } from "../util/apiUrlList.js";
-import Loading from "./global/loading.js";
 import { useNavigate } from 'react-router-dom';
+import { loginApiUrl } from "../util/apiUrlList.js";
+import axiosInstance from "../util/axiosInstance";
+import Loading from "./global/loading.js";
 function Login() {
 
     const [formData, setFormData] = useState({
@@ -29,14 +29,20 @@ function Login() {
             password: formData.password
         }).then((response) => {
             setShowLoading(false);
-            if(response.data){
-                if(response.data.status==='SUCCESS'){
-                    console.log("Login success...")
-                    localStorage.setItem('token', response.data.data.token);
-                    navigate("/admin-dashboard");
-                }else{
+            if (response.data) {
+                if (response.data.status === 'SUCCESS') {
+                    const { accessToken, refreshToken, firstLogin } = response.data.data;
+                    localStorage.setItem('accessToken', accessToken);
+                    localStorage.setItem('refreshToken', refreshToken);
+                    
+                    if (firstLogin) {
+                        navigate('/change-password'); // Redirect to Change Password if it's the first login
+                    } else {
+                        navigate('/admin-dashboard'); // Redirect to home or dashboard
+                    }
+                } else {
                     setShowError(true);
-                    setErrorMessage("DEFAULT ERROR MESSEGE");
+                    setErrorMessage(response.data.message || "Login failed");
                 }
             }
         }).catch((err) => {
