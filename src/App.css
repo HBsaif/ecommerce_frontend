@@ -1,10 +1,10 @@
 /* In your styles.css or a similar stylesheet */
-body {
+/* body {
   background-image: url("../public/images/bg.jpg");
-  background-size: cover; /* This ensures the image covers the entire viewport */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Prevent repeating the image */
-  background-attachment: fixed; /* Make the background fixed on scroll */
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-attachment: fixed; 
   margin: 0;
   padding: 0;
-}
+} */
