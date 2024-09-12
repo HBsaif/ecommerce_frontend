@@ -11,6 +11,17 @@ const axiosInstance = axios.create({
   },
 });
 
+
+export const axiosInstanceWithoutAuth = axios.create({
+  // baseURL: 'https://ecommerce-production-73b5.up.railway.app/v1', // Replace with your API base URL
+  baseURL: BASE_URL,
+  timeout: 100000, // Optional: Set a timeout (in milliseconds)
+  headers: {
+    'Content-Type': 'application/json',
+    // Add other default headers if needed
+  },
+});
+
 // Optional: Add an interceptor to handle requests or responses
 axiosInstance.interceptors.request.use(
   (config) => {
@@ -53,5 +64,7 @@ axiosInstance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+
 
 export default axiosInstance;

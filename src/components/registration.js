@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import axiosInstance from "../util/axiosInstance";
-import { initiateRegisterApiUrl, confirmRegisterApiUrl } from "../util/apiUrlList.js";
-import Loading from "./global/loading.js";
+import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { confirmRegisterApiUrl, initiateRegisterApiUrl } from "../util/apiUrlList.js";
+import { axiosInstanceWithoutAuth } from "../util/axiosInstance";
+import Loading from "./global/loading.js";
 
 function Register() {
     const [formData, setFormData] = useState({
@@ -30,7 +31,7 @@ function Register() {
         e.preventDefault();
         setShowLoading(true);
         setShowError(false);
-        axiosInstance.post(initiateRegisterApiUrl, {
+        axiosInstanceWithoutAuth.post(initiateRegisterApiUrl, {
             email: formData.email
         }).then((response) => {
             setShowLoading(false);
@@ -59,7 +60,7 @@ function Register() {
         e.preventDefault();
         setShowLoading(true);
         setShowError(false);
-        axiosInstance.post(confirmRegisterApiUrl, {
+        axiosInstanceWithoutAuth.post(confirmRegisterApiUrl, {
             requestId: formData.requestId,
             otp: formData.otp,
             fullName: formData.fullName,
@@ -84,51 +85,81 @@ function Register() {
     };
 
     return (
-        <div className="register-wrapper">
-            {
-                showLoading &&
-                <Loading />
-            }
-            <div className="wrapper">
-                <form onSubmit={stage === 1 ? onClickInitiateSignup : onClickConfirmSignup}>
-                    <h1>{stage === 1 ? "Register" : "Confirm Signup"}</h1>
-                    {
-                        showError &&
-                        <p className="err">{errorMessage}</p>
-                    }
-                    {stage === 1 && (
-                        <>
-                            <div className="input-box">
-                                <input type="text" placeholder="Email" name="email" value={formData.email} required onChange={handleChange} />
-                                <i className='bx bxs-user'></i>
+        <Container className="d-flex justify-content-center align-items-center min-vh-100">
+            {showLoading && <Loading />}
+            <Row className="w-100">
+                <Col md={6} lg={4} className="mx-auto">
+                    <div className="border p-4 rounded shadow-sm bg-light">
+                        <h1 className="text-center mb-4">{stage === 1 ? "Register" : "Confirm Signup"}</h1>
+                        {showError && <Alert variant="danger">{errorMessage}</Alert>}
+                        <Form onSubmit={stage === 1 ? onClickInitiateSignup : onClickConfirmSignup}>
+                            {stage === 1 && (
+                                <>
+                                    <Form.Group controlId="formEmail" className="mb-3">
+                                        <Form.Label>Email address</Form.Label>
+                                        <Form.Control
+                                            type="email"
+                                            placeholder="Enter your email"
+                                            name="email"
+                                            value={formData.email}
+                                            required
+                                            onChange={handleChange}
+                                        />
+                                    </Form.Group>
+                                    <Button variant="primary" type="submit" className="w-100">
+                                        Send OTP
+                                    </Button>
+                                </>
+                            )}
+                            {stage === 2 && (
+                                <>
+                                    <Form.Group controlId="formOtp" className="mb-3">
+                                        <Form.Label>OTP</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            placeholder="Enter OTP"
+                                            name="otp"
+                                            value={formData.otp}
+                                            required
+                                            onChange={handleChange}
+                                        />
+                                    </Form.Group>
+                                    <Form.Group controlId="formFullName" className="mb-3">
+                                        <Form.Label>Full Name</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            placeholder="Enter your full name"
+                                            name="fullName"
+                                            value={formData.fullName}
+                                            required
+                                            onChange={handleChange}
+                                        />
+                                    </Form.Group>
+                                    <Form.Group controlId="formPassword" className="mb-4">
+                                        <Form.Label>Password</Form.Label>
+                                        <Form.Control
+                                            type="password"
+                                            placeholder="Enter your password"
+                                            name="password"
+                                            value={formData.password}
+                                            required
+                                            onChange={handleChange}
+                                        />
+                                    </Form.Group>
+                                    <Button variant="primary" type="submit" className="w-100">
+                                        Register
+                                    </Button>
+                                </>
+                            )}
+                            <div className="text-center mt-3">
+                                <p>Already have an account? <a href="/login">Login</a></p>
                             </div>
-                            <button className="btn" type="submit">Send OTP</button>
-                        </>
-                    )}
-                    {stage === 2 && (
-                        <>
-                            <div className="input-box">
-                                <input type="text" placeholder="OTP" name="otp" value={formData.otp} required onChange={handleChange} />
-                                <i className='bx bxs-lock-alt'></i>
-                            </div>
-                            <div className="input-box">
-                                <input type="text" placeholder="Full Name" name="fullName" value={formData.fullName} required onChange={handleChange} />
-                                <i className='bx bxs-user'></i>
-                            </div>
-                            <div className="input-box">
-                                <input type="password" placeholder="Password" name="password" value={formData.password} required onChange={handleChange} />
-                                <i className='bx bxs-lock-alt'></i>
-                            </div>
-                            <button className="btn" type="submit">Register</button>
-                        </>
-                    )}
-                    <div className="register-link">
-                        <p>Already have an account? <br /> <a href="/login">Login</a></p>
+                        </Form>
                     </div>
-                </form>
-            </div>
-        </div>
-    )
+                </Col>
+            </Row>
+        </Container>
+    );
 }
 
 export default Register;

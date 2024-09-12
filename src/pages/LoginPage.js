@@ -1,10 +1,11 @@
 import React from "react";
+import Layout from "../components/layout/mainlayout";
 import Login from "../components/login";
 function LoginPage(){
     return(
-        <div className="login-page-wrapper">
+        <Layout>
             <Login/>
-        </div>
+        </Layout>
     )
 }
 

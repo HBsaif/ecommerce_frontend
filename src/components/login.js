@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import '../components/css/global.css';
 import { loginApiUrl } from "../util/apiUrlList.js";
 import axiosInstance from "../util/axiosInstance";
 import Loading from "./global/loading.js";
-function Login() {
 
+function Login() {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -13,6 +15,7 @@ function Login() {
     const [showError, setShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
+
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData(prevState => ({
@@ -20,6 +23,7 @@ function Login() {
             [name]: value
         }));
     };
+
     const onClickLogin = (e) => {
         e.preventDefault();
         setShowLoading(true);
@@ -34,7 +38,7 @@ function Login() {
                     const { accessToken, refreshToken, firstLogin } = response.data.data;
                     localStorage.setItem('accessToken', accessToken);
                     localStorage.setItem('refreshToken', refreshToken);
-                    
+
                     if (firstLogin) {
                         navigate('/change-password'); // Redirect to Change Password if it's the first login
                     } else {
@@ -52,53 +56,57 @@ function Login() {
                 if (err.response.data) {
                     setErrorMessage(err.response.data.message);
                 } else {
-                    setErrorMessage("DEFAULT ERROR MESSEGE");
+                    setErrorMessage("DEFAULT ERROR MESSAGE");
                 }
             } else {
                 setErrorMessage(err.message);
             }
-
-        })
+        });
     }
+
     return (
-        <div className="login-wrapper">
-            {
-                showLoading &&
-                <Loading />
-            }
-            <div className="wrapper">
-                <form onSubmit={onClickLogin}>
-                    <h1>Login</h1>
-                    {
-                        showError &&
-                        <p className="err">{errorMessage}</p>
-                    }
-                    <div className="input-box">
-                        <input type="text" placeholder="Username" name="email" value={formData.email} required onChange={handleChange} />
-                        <i className='bx bxs-user'></i>
+        <Container className="d-flex justify-content-center align-items-center min-vh-100">
+            {showLoading && <Loading />}
+            <Row className="w-100">
+                <Col md={6} lg={4} className="mx-auto">
+                    <div className="border p-4 rounded shadow-sm bg-light">
+                        <h1 className="text-center mb-4">Login</h1>
+                        {showError && <Alert variant="danger">{errorMessage}</Alert>}
+                        <Form onSubmit={onClickLogin}>
+                            <Form.Group controlId="formEmail" className="mb-3">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control
+                                    type="email"
+                                    placeholder="Enter your email"
+                                    name="email"
+                                    value={formData.email}
+                                    required
+                                    onChange={handleChange}
+                                />
+                            </Form.Group>
+                            <Form.Group controlId="formPassword" className="mb-4">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control
+                                    type="password"
+                                    placeholder="Enter your password"
+                                    name="password"
+                                    value={formData.password}
+                                    required
+                                    onChange={handleChange}
+                                />
+                            </Form.Group>
+                            <Button variant="primary" type="submit" className="w-100">
+                                Login
+                            </Button>
+                            <div className="text-center mt-3">
+                                <p>Don't have an account? <a href="/register">Register</a></p>
+                            </div>
+                        </Form>
                     </div>
-
-                    <div className="input-box">
-                        <input type="password" placeholder="Password" name="password" value={formData.password} required onChange={handleChange} />
-                        <i className='bx bxs-lock-alt'></i>
-                    </div>
-
-                    {/* <div className="remember-forgot">
-                        <label>
-                            <input type="checkbox" /> Remember me
-                        </label>
-                        <a href="#">Forgot Password?</a>
-                    </div> */}
-
-                    <button className="btn" type="submit">Login</button>
-
-                    <div className="register-link">
-                        <p>Don't have an account? <br /> <a href="/register">Register</a></p>
-                    </div>
-                </form>
-            </div>
-        </div>
-    )
+                </Col>
+            </Row>
+        </Container>
+    );
 }
 
 export default Login;
