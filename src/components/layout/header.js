@@ -1,14 +1,15 @@
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons"; // Correct import for WhatsApp icon
 import {
-    faHeart,
-    faSearch,
-    faShoppingCart,
-    faUser,
+  faHeart,
+  faSearch,
+  faShoppingCart,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Button, Form, FormControl, Nav, Navbar } from "react-bootstrap";
 import "../css/header.css";
+
 
 const Header = () => {
   return (
@@ -25,11 +26,11 @@ const Header = () => {
         {/* Brand Logo - Center */}
         <Navbar.Brand href="/" className="mx-auto text-center">
           <img
-            src="/images/sbl.jfif" // Replace with your logo URL
+            src="https://i.postimg.cc/x8ncvFjr/logo.png" // Replace with your logo URL
             alt="Brand Logo"
-            width="150px"
-            height="50px"
-            className="d-inline-block align-top"
+            // width="150px"
+            // height="50px"
+            // className="d-inline-block align-top"
           />
         </Navbar.Brand>
 
@@ -91,6 +92,51 @@ const Header = () => {
         </div>
       </div>
     </Navbar>
+
+  // <section id="header">
+  //       <a href="#">
+  //         <img src="https://i.postimg.cc/x8ncvFjr/logo.png" alt="" />
+  //       </a>
+  //       <div>
+  //         <ul id="navbar">
+  //           <li>
+  //             <a href="index.html" class="active">
+  //               Home
+  //             </a>
+  //           </li>
+  //           <li>
+  //             <a href="shop.html">Shop</a>
+  //           </li>
+  //           <li>
+  //             <a href="blog.html">Blog</a>
+  //           </li>
+  //           <li>
+  //             <a href="about.html">About</a>
+  //           </li>
+  //           <li>
+  //             <a href="contact.html">Contact</a>
+  //           </li>
+  //           <li>
+  //             <a href="cart.html" id="lg-bag">
+  //               <FontAwesomeIcon icon={faBagShopping} />
+  //             </a>
+  //             <span class="quantity">0</span>
+  //           </li>
+  //           <li>
+  //             <a href="#" id="close">
+  //               <i class="far fa-times"></i>
+  //             </a>
+  //           </li>
+  //         </ul>
+  //       </div>
+  //       <div id="mobile">
+  //         <a href="cart.html">
+  //           <i class="fal fa-shopping-bag"></i>
+  //           <span class="quantity">0</span>
+  //         </a>
+  //         <i id="bar" class="fas fa-outdent"></i>
+  //       </div>
+  //     </section>
   );
 };
 

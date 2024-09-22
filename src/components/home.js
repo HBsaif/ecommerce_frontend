@@ -1,11 +1,12 @@
 import React from "react";
 import '../components/css/home.css';
+// import "../components/css/test.css";
 
 function Home() {
   return (
-    <div id="product-container">
-      
-    </div>
+    <>  
+ 
+  </>
   );
 }
 
