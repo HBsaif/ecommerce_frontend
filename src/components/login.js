@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import '../components/css/global.css';
-import { loginApiUrl } from "../util/apiUrlList.js";
+import apiUrlList from "../util/apiUrlList.js";
 import axiosInstance from "../util/axiosInstance";
 import Loading from "./global/loading.js";
 
@@ -28,7 +28,7 @@ function Login() {
         e.preventDefault();
         setShowLoading(true);
         setShowError(false);
-        axiosInstance.post(loginApiUrl, {
+        axiosInstance.post(apiUrlList.loginApiUrl, {
             email: formData.email,
             password: formData.password
         }).then((response) => {

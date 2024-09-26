@@ -1,9 +1,11 @@
 import React from 'react';
-import Sidebar from '../components/Sidebar';
 import '../components/css/AdminDashboard.css';
+import Layout from '../components/layout/mainlayout';
+import Sidebar from '../components/Sidebar';
 
 const AdminDashboard = () => {
     return (
+        <Layout>
         <div className="admin-dashboard">
             <Sidebar />
             <div className="dashboard-content">
@@ -11,6 +13,8 @@ const AdminDashboard = () => {
                 {/* Add your dashboard content here */}
             </div>
         </div>
+        </Layout>
+        
     );
 };
 

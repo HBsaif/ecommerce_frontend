@@ -4,6 +4,7 @@ import {
   faSearch,
   faShoppingCart,
   faUser,
+  faUserCircle
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
@@ -12,6 +13,7 @@ import "../css/header.css";
 
 
 const Header = () => {
+  const isLoggedIn = !!localStorage.getItem('accessToken');
   return (
     <Navbar
       bg="light"
@@ -37,13 +39,24 @@ const Header = () => {
         {/* Right Section - Search and Icons */}
         <div className="d-flex align-items-center">
           {/* Signin Icon */}
-          <Nav.Link href="/login" className="mx-2">
-            <FontAwesomeIcon
-              icon={faUser}
-              size="lg"
-              style={{ color: "#000000" }}
-            />
-          </Nav.Link>
+          {/* Conditional rendering for user icon */}
+          {isLoggedIn ? (
+                        <Nav.Link href="/profile" className="mx-2">
+                            <FontAwesomeIcon
+                                icon={faUserCircle}
+                                size="lg"
+                                style={{ color: "#000000" }}
+                            />
+                        </Nav.Link>
+                    ) : (
+                        <Nav.Link href="/login" className="mx-2">
+                            <FontAwesomeIcon
+                                icon={faUser}
+                                size="lg"
+                                style={{ color: "#000000" }}
+                            />
+                        </Nav.Link>
+                    )}
 
           {/* Wishlist Icon */}
           <Nav.Link href="/wishlist" className="mx-2">

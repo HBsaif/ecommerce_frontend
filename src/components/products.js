@@ -1,33 +1,34 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { faInfoCircle, faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import apiUrlList from "../util/apiUrlList"; // Import API URL from apiUrlList.js
+import { axiosInstanceWithoutAuth } from "../util/axiosInstance"; // Use the customized Axios instance
 
-function Products({ handleAddtoCart, handleAddtoWishlist }) {
-  // State to hold product data and pagination details
+function Products({ size = 8, categoryId, handleAddtoWishlist }) {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  // Fetch products from the API with pagination
   const fetchProducts = async (page) => {
     try {
-      const response = await axios.get(`http://localhost:8080/v1/api/products`, {
-        params: { page: page - 1, size: 8 } // Adjust 'size' for items per page
-      });
-
-      // Assuming the response contains products and pagination info
-      setProducts(response.data.content);  // 'content' is where products are in the API response
-      setTotalPages(response.data.totalPages);  // Update the total pages
+      const response = await axiosInstanceWithoutAuth.get(
+        apiUrlList.getProductsApiUrl, // Replace the hardcoded URL with loginApiUrl from apiUrlList.js
+        {
+          params: { page: page - 1, size: size, categoryId: categoryId }, // Pass categoryId as a parameter
+        }
+      );
+      setProducts(response.data.content);
+      setTotalPages(response.data.totalPages);
     } catch (error) {
-      console.error('Error fetching products:', error);
+      console.error("Error fetching products:", error);
     }
   };
 
-  // Fetch products when the component mounts or when the page changes
   useEffect(() => {
     fetchProducts(currentPage);
-  }, [currentPage]);
+  }, [currentPage, categoryId]); // Fetch products again if categoryId changes
 
-  // Function to handle page change
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
       setCurrentPage(newPage);
@@ -46,24 +47,22 @@ function Products({ handleAddtoCart, handleAddtoWishlist }) {
             <div className="des">
               <span>{product.brand}</span>
               <h5>{product.name}</h5>
-              <div className="star">
-                {/* Placeholder for star ratings */}
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
+              <div>
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
               </div>
               <h4>${product.price}</h4>
             </div>
-            <a href="#" onClick={() => handleAddtoCart(product)}>
-              <i className="fal fa-shopping-cart cart"></i>
-            </a>
+            <Link to={`/product-details/${product.id}`}>
+              <FontAwesomeIcon className="cart" icon={faInfoCircle} style={{ color: '#088178' }} />
+            </Link>
           </div>
         ))}
       </div>
 
-      {/* Pagination controls */}
       <div className="pagination d-flex justify-content-center">
         <button
           className="btn btn-secondary mx-2"
@@ -72,7 +71,9 @@ function Products({ handleAddtoCart, handleAddtoWishlist }) {
         >
           Previous
         </button>
-        <span className="align-self-center">Page {currentPage} of {totalPages}</span>
+        <span className="align-self-center">
+          Page {currentPage} of {totalPages}
+        </span>
         <button
           className="btn btn-secondary mx-2"
           onClick={() => handlePageChange(currentPage + 1)}

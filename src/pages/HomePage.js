@@ -1,7 +1,7 @@
 import React from "react";
 import Banner from "../components/banner";
 import BannerBox from "../components/bannerBox";
-import Features from "../components/features";
+import Catergories from "../components/categories";
 import Layout from "../components/layout/mainlayout";
 import NewArrivals from "../components/newArrivals";
 import Poster from "../components/poster";
@@ -11,8 +11,8 @@ function HomePage() {
     return (
         <Layout>
             <Banner/>
-            <Features/>
-            <Products/>
+            <Catergories/>
+            <Products size={8}/>
             <Poster/>
             <NewArrivals/>
             <BannerBox/>

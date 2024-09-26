@@ -4,421 +4,517 @@ import "../components/css/test.css";
 function TestPage() {
   return (
     <>
-      <section id="hero">
-        <h4>Trade-in-fair</h4>
-        <h2>Super value deals</h2>
-        <h1>On all Products</h1>
-        <p>Save more with coupons and up to 70% off!</p>
-        <button>Shop Now</button>
-      </section>
-
-      <section id="feature" class="section-p1">
-        <div class="fe-box">
-          <img src="https://i.postimg.cc/PrN2Y6Cv/f1.png" alt="" />
-          <h6>Free Shipping</h6>
-        </div>
-
-        <div class="fe-box">
-          <img src="https://i.postimg.cc/qvycxW4q/f2.png" alt="" />
-          <h6>Online Order</h6>
-        </div>
-
-        <div class="fe-box">
-          <img src="https://i.postimg.cc/1Rdphyz4/f3.png" alt="" />
-          <h6>Save Money</h6>
-        </div>
-
-        <div class="fe-box">
-          <img src="https://i.postimg.cc/GpYc2JFZ/f4.png" alt="" />
-          <h6>Promotions</h6>
-        </div>
-
-        <div class="fe-box">
-          <img src="https://i.postimg.cc/4yFCwmv6/f5.png" alt="" />
-          <h6>Happy Sell</h6>
-        </div>
-
-        <div class="fe-box">
-          <img src="https://i.postimg.cc/gJN1knTC/f6.png" alt="" />
-          <h6>F24/7 Support</h6>
-        </div>
-      </section>
-
-      <section id="product1" class="section-p1">
-        <h2>Featured Products</h2>
-        <p>Summer Collection New Modern Design</p>
-        <div class="pro-container">
-          <div
-            class="pro"
-            onclick="window.location.href='https://codepen.io/Motun/full/OJBwbrQ'"
-          >
-            <img src="https://i.postimg.cc/kg9YYbTn/f1.jpg" alt="" />
-            <div class="des">
-              <span>adidas</span>
-              <h5>Carton Astronault Tshirts</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+      {/* // <!-- content --> */}
+      <section className="py-5 prod-details-wrap">
+        <div class="container">
+          <div class="row gx-5">
+            <aside class="col-lg-6">
+              <div class="border rounded-4 mb-3 d-flex justify-content-center">
+                <a
+                  data-fslightbox="mygalley"
+                  class="rounded-4"
+                  target="_blank"
+                  data-type="image"
+                  href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big.webp"
+                  rel="noreferrer"
+                >
+                  <img
+                    style={{
+                      maxWidth: "100%",
+                      maxHeight: "100vh",
+                      margin: "auto",
+                    }}
+                    className="rounded-4 fit"
+                    src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big.webp"
+                    alt="Product"
+                  />
+                </a>
               </div>
-              <h4>$78</h4>
-            </div>
-            <a href="">
-              <i class="fal fa-shopping-cart cart"></i>
-            </a>
-          </div>
-
-          <div class="pro">
-            <img src="https://i.postimg.cc/2yhT2kvb/f2.jpg" alt="" />
-            <div class="des">
-              <span>adidas</span>
-              <h5>Carton Leave Tshirts</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+              <div className="d-flex justify-content-center mb-3">
+                <a
+                  data-fslightbox="mygalley"
+                  className="border mx-1 rounded-2"
+                  target="_blank"
+                  data-type="image"
+                  href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big1.webp"
+                  rel="noreferrer"
+                >
+                  <img
+                    width="60"
+                    height="60"
+                    className="rounded-2"
+                    src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big1.webp"
+                    alt="Product 1"
+                  />
+                </a>
+                <a
+                  data-fslightbox="mygalley"
+                  className="border mx-1 rounded-2"
+                  target="_blank"
+                  data-type="image"
+                  href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big2.webp"
+                  rel="noreferrer"
+                >
+                  <img
+                    width="60"
+                    height="60"
+                    className="rounded-2"
+                    src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big2.webp"
+                    alt="Product 2"
+                  />
+                </a>
+                <a
+                  data-fslightbox="mygalley"
+                  className="border mx-1 rounded-2"
+                  target="_blank"
+                  data-type="image"
+                  href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big3.webp"
+                  rel="noreferrer"
+                >
+                  <img
+                    width="60"
+                    height="60"
+                    className="rounded-2"
+                    src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big3.webp"
+                    alt="Product 3"
+                  />
+                </a>
+                <a
+                  data-fslightbox="mygalley"
+                  className="border mx-1 rounded-2"
+                  target="_blank"
+                  data-type="image"
+                  href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big4.webp"
+                  rel="noreferrer"
+                >
+                  <img
+                    width="60"
+                    height="60"
+                    className="rounded-2"
+                    src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big4.webp"
+                    alt="Product 4"
+                  />
+                </a>
+                <a
+                  data-fslightbox="mygalley"
+                  className="border mx-1 rounded-2"
+                  target="_blank"
+                  data-type="image"
+                  href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big.webp"
+                  rel="noreferrer"
+                >
+                  <img
+                    width="60"
+                    height="60"
+                    className="rounded-2"
+                    src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big.webp"
+                    alt="Product 5"
+                  />
+                </a>
               </div>
-              <h4>$78</h4>
-            </div>
-            <a href="">
-              <i class="fal fa-shopping-cart cart"></i>
-            </a>
-          </div>
 
-          <div class="pro">
-            <img src="https://i.postimg.cc/VL9DtNm2/f3.jpg" alt="" />
-            <div class="des">
-              <span>adidas</span>
-              <h5>Rose Multicolor Tshirts</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+              {/* <!-- thumbs-wrap.// --> */}
+              {/* <!-- gallery-wrap .end// --> */}
+            </aside>
+            <main class="col-lg-6">
+              <div class="ps-lg-3">
+                <h4 class="title text-dark">
+                  Quality Men's Hoodie for Winter, Men's Fashion <br />
+                  Casual Hoodie
+                </h4>
+                <div class="d-flex flex-row my-3">
+                  <div class="text-warning mb-1 me-2">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span class="ms-1">4.5</span>
+                  </div>
+                  <span class="text-muted">
+                    <i class="fas fa-shopping-basket fa-sm mx-1"></i>154 orders
+                  </span>
+                  <span class="text-success ms-2">In stock</span>
+                </div>
+
+                <div class="mb-3">
+                  <span class="h5">$75.00</span>
+                  <span class="text-muted">/per box</span>
+                </div>
+
+                <p>
+                  Modern look and quality demo item is a streetwear-inspired
+                  collection that continues to break away from the conventions
+                  of mainstream fashion. Made in Italy, these black and brown
+                  clothing low-top shirts for men.
+                </p>
+
+                <div class="row">
+                  <dt class="col-3">Type:</dt>
+                  <dd class="col-9">Regular</dd>
+
+                  <dt class="col-3">Color</dt>
+                  <dd class="col-9">Brown</dd>
+
+                  <dt class="col-3">Material</dt>
+                  <dd class="col-9">Cotton, Jeans</dd>
+
+                  <dt class="col-3">Brand</dt>
+                  <dd class="col-9">Reebook</dd>
+                </div>
+
+                <hr />
+
+                <div class="row mb-4">
+                  <div class="col-md-4 col-6">
+                    <label class="mb-2">Size</label>
+                    <select
+                      class="form-select border border-secondary"
+                      style={{height: "35px"}}
+                    >
+                      <option>Small</option>
+                      <option>Medium</option>
+                      <option>Large</option>
+                    </select>
+                  </div>
+                  {/* <!-- col.// --> */}
+                  <div class="col-md-4 col-6 mb-3">
+                    <label class="mb-2 d-block">Quantity</label>
+                    <div class="input-group mb-3" style={{width: "170px"}}>
+                      <button
+                        class="btn btn-white border border-secondary px-3"
+                        type="button"
+                        id="button-addon1"
+                        data-mdb-ripple-color="dark"
+                      >
+                        <i class="fas fa-minus"></i>
+                      </button>
+                      <input
+                        type="text"
+                        class="form-control text-center border border-secondary"
+                        placeholder="14"
+                        aria-label="Example text with button addon"
+                        aria-describedby="button-addon1"
+                      />
+                      <button
+                        class="btn btn-white border border-secondary px-3"
+                        type="button"
+                        id="button-addon2"
+                        data-mdb-ripple-color="dark"
+                      >
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <a href="#" class="btn btn-warning shadow-0">
+                  {" "}
+                  Buy now{" "}
+                </a>
+                <a href="#" class="btn btn-primary shadow-0">
+                  {" "}
+                  <i class="me-1 fa fa-shopping-basket"></i> Add to cart{" "}
+                </a>
+                <a
+                  href="#"
+                  class="btn btn-light border border-secondary py-2 icon-hover px-3"
+                >
+                  {" "}
+                  <i class="me-1 fa fa-heart fa-lg"></i> Save{" "}
+                </a>
               </div>
-              <h4>$78</h4>
-            </div>
-            <a href="">
-              <i class="fal fa-shopping-cart cart"></i>
-            </a>
-          </div>
-
-          <div class="pro">
-            <img src="https://i.postimg.cc/vZ3hPS1z/f4.jpg" alt="" />
-            <div class="des">
-              <span>adidas</span>
-              <h5>Pink Flower Tshirts</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4>$78</h4>
-            </div>
-            <a href="">
-              <i class="fal fa-shopping-cart cart"></i>
-            </a>
-          </div>
-
-          <div class="pro">
-            <img src="https://i.postimg.cc/q7FLrhx6/f5.jpg" alt="" />
-            <div class="des">
-              <span>adidas</span>
-              <h5>Purple Flowering Tshirts</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4>$78</h4>
-            </div>
-            <a href="">
-              <i class="fal fa-shopping-cart cart"></i>
-            </a>
-          </div>
-
-          <div class="pro">
-            <img src="https://i.postimg.cc/L86BZByZ/f7.jpg" alt="" />
-            <div class="des">
-              <span>adidas</span>
-              <h5>Short Knicker </h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4>$78</h4>
-            </div>
-            <a href="">
-              <i class="fal fa-shopping-cart cart"></i>
-            </a>
-          </div>
-
-          <div class="pro">
-            <img src="https://i.postimg.cc/zDxJ2f0H/f6.jpg" alt="" />
-            <div class="des">
-              <span>adidas</span>
-              <h5>2 in 1 Double Routed</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4>$78</h4>
-            </div>
-            <a href="">
-              <i class="fal fa-shopping-cart cart"></i>
-            </a>
-          </div>
-
-          <div class="pro">
-            <img src="https://i.postimg.cc/x8qcBrpP/n6.jpg" alt="" />
-            <div class="des">
-              <span>adidas</span>
-              <h5>Ash Short</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4>$78</h4>
-            </div>
-            <a href="">
-              <i class="fal fa-shopping-cart cart"></i>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section id="banner" class="section-m1">
-        <h4> Repair Service</h4>
-        <h2>
-          Up to <span>70% off </span> - All Tshirts and Accessories
-        </h2>
-        <button class="btn normal">Explore more</button>
-      </section>
-
-      <section id="product1" class="section-p1">
-        <h2>New Arrivals</h2>
-        <p>Summer Collection New Modern Design</p>
-        <div class="pro-container">
-          <div class="pro">
-            <img src="https://i.postimg.cc/hG1hqqK6/n1.jpg" alt="" />
-            <div class="des">
-              <span>adidas</span>
-              <h5>Carton Astronault Tshirts</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4>$78</h4>
-            </div>
-            <a href="">
-              <i class="fal fa-shopping-cart cart"></i>
-            </a>
-          </div>
-
-          <div class="pro">
-            <img src="https://i.postimg.cc/BZkSkvxt/n2.jpg" alt="" />
-            <div class="des">
-              <span>adidas</span>
-              <h5>Carton Leave Tshirts</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4>$78</h4>
-            </div>
-            <a href="">
-              <i class="fal fa-shopping-cart cart"></i>
-            </a>
-          </div>
-
-          <div class="pro">
-            <img src="https://i.postimg.cc/KYjcC3sk/n3.jpg" alt="" />
-            <div class="des">
-              <span>adidas</span>
-              <h5>Rose Multicolor Tshirts</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4>$78</h4>
-            </div>
-            <a href="">
-              <i class="fal fa-shopping-cart cart"></i>
-            </a>
-          </div>
-
-          <div class="pro">
-            <img src="https://i.postimg.cc/vHvQBtJx/n4.jpg" alt="" />
-            <div class="des">
-              <span>adidas</span>
-              <h5>Pink Flower Tshirts</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4>$78</h4>
-            </div>
-            <a href="">
-              <i class="fal fa-shopping-cart cart"></i>
-            </a>
-          </div>
-
-          <div class="pro">
-            <img src="https://i.postimg.cc/908J8S4q/n5.jpg" alt="" />
-            <div class="des">
-              <span>adidas</span>
-              <h5>Purple Flowering Tshirts</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4>$78</h4>
-            </div>
-            <a href="">
-              <i class="fal fa-shopping-cart cart"></i>
-            </a>
-          </div>
-
-          <div class="pro">
-            <img src="https://i.postimg.cc/X7r8NsGQ/n7.jpg" alt="" />
-            <div class="des">
-              <span>adidas</span>
-              <h5>Short Knicker </h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4>$78</h4>
-            </div>
-            <a href="">
-              <i class="fal fa-shopping-cart cart"></i>
-            </a>
-          </div>
-
-          <div class="pro">
-            <img src="https://i.postimg.cc/JhrH0hYM/n8.jpg" alt="" />
-            <div class="des">
-              <span>adidas</span>
-              <h5>2 in 1 Double Routed</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4>$78</h4>
-            </div>
-            <a href="">
-              <i class="fal fa-shopping-cart cart"></i>
-            </a>
-          </div>
-
-          <div class="pro">
-            <img src="https://i.postimg.cc/2Sq4mytJ/f8.jpg" alt="" />
-            <div class="des">
-              <span>adidas</span>
-              <h5>Ash Short</h5>
-              <div class="star">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <h4>$78</h4>
-            </div>
-            <a href="">
-              <i class="fal fa-shopping-cart cart"></i>
-            </a>
+            </main>
           </div>
         </div>
       </section>
+      {/* // <!-- content --> */}
 
-      <section id="sm-banner" class="section-p1">
-        <div class="banner-box">
-          <h4>crazy deals</h4>
-          <h2>buy 1 get 1 free</h2>
-          <span>The best classic dress is on sales at cara</span>
-          <button class="btn white">Learn More</button>
-        </div>
+      <section class="bg-light border-top py-4">
+        <div class="container">
+          <div class="row gx-4">
+            <div class="col-lg-8 mb-4">
+              <div class="border rounded-2 px-3 py-2 bg-white">
+                {/* <!-- Pills navs --> */}
+                <ul
+                  class="nav nav-pills nav-justified mb-3"
+                  id="ex1"
+                  role="tablist"
+                >
+                  <li class="nav-item d-flex" role="presentation">
+                    <a
+                      class="nav-link d-flex align-items-center justify-content-center w-100 active"
+                      id="ex1-tab-1"
+                      data-mdb-toggle="pill"
+                      href="#ex1-pills-1"
+                      role="tab"
+                      aria-controls="ex1-pills-1"
+                      aria-selected="true"
+                    >
+                      Specification
+                    </a>
+                  </li>
+                  <li class="nav-item d-flex" role="presentation">
+                    <a
+                      class="nav-link d-flex align-items-center justify-content-center w-100"
+                      id="ex1-tab-2"
+                      data-mdb-toggle="pill"
+                      href="#ex1-pills-2"
+                      role="tab"
+                      aria-controls="ex1-pills-2"
+                      aria-selected="false"
+                    >
+                      Warranty info
+                    </a>
+                  </li>
+                  <li class="nav-item d-flex" role="presentation">
+                    <a
+                      class="nav-link d-flex align-items-center justify-content-center w-100"
+                      id="ex1-tab-3"
+                      data-mdb-toggle="pill"
+                      href="#ex1-pills-3"
+                      role="tab"
+                      aria-controls="ex1-pills-3"
+                      aria-selected="false"
+                    >
+                      Shipping info
+                    </a>
+                  </li>
+                  <li class="nav-item d-flex" role="presentation">
+                    <a
+                      class="nav-link d-flex align-items-center justify-content-center w-100"
+                      id="ex1-tab-4"
+                      data-mdb-toggle="pill"
+                      href="#ex1-pills-4"
+                      role="tab"
+                      aria-controls="ex1-pills-4"
+                      aria-selected="false"
+                    >
+                      Seller profile
+                    </a>
+                  </li>
+                </ul>
+                {/* <!-- Pills navs --> */}
 
-        <div class="banner-box banner-box2">
-          <h4>spring/summer</h4>
-          <h2>upcoming season</h2>
-          <span>The best classic dress is on sales at cara</span>
-          <button class="btn white">Collection</button>
+                {/* <!-- Pills content --> */}
+                <div class="tab-content" id="ex1-content">
+                  <div
+                    class="tab-pane fade show active"
+                    id="ex1-pills-1"
+                    role="tabpanel"
+                    aria-labelledby="ex1-tab-1"
+                  >
+                    <p>
+                      With supporting text below as a natural lead-in to
+                      additional content. Lorem ipsum dolor sit amet,
+                      consectetur adipisicing elit, sed do eiusmod tempor
+                      incididunt ut labore et dolore magna aliqua. Ut enim ad
+                      minim veniam, quis nostrud exercitation ullamco laboris
+                      nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                      dolor in reprehenderit in voluptate velit esse cillum
+                      dolore eu fugiat nulla pariatur.
+                    </p>
+                    <div class="row mb-2">
+                      <div class="col-12 col-md-6">
+                        <ul class="list-unstyled mb-0">
+                          <li>
+                            <i class="fas fa-check text-success me-2"></i>Some
+                            great feature name here
+                          </li>
+                          <li>
+                            <i class="fas fa-check text-success me-2"></i>Lorem
+                            ipsum dolor sit amet, consectetur
+                          </li>
+                          <li>
+                            <i class="fas fa-check text-success me-2"></i>Duis
+                            aute irure dolor in reprehenderit
+                          </li>
+                          <li>
+                            <i class="fas fa-check text-success me-2"></i>
+                            Optical heart sensor
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-12 col-md-6 mb-0">
+                        <ul class="list-unstyled">
+                          <li>
+                            <i class="fas fa-check text-success me-2"></i>Easy
+                            fast and ver good
+                          </li>
+                          <li>
+                            <i class="fas fa-check text-success me-2"></i>Some
+                            great feature name here
+                          </li>
+                          <li>
+                            <i class="fas fa-check text-success me-2"></i>Modern
+                            style and design
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <table class="table border mt-3 mb-2">
+                      <tr>
+                        <th class="py-2">Display:</th>
+                        <td class="py-2">
+                          13.3-inch LED-backlit display with IPS
+                        </td>
+                      </tr>
+                      <tr>
+                        <th class="py-2">Processor capacity:</th>
+                        <td class="py-2">2.3GHz dual-core Intel Core i5</td>
+                      </tr>
+                      <tr>
+                        <th class="py-2">Camera quality:</th>
+                        <td class="py-2">720p FaceTime HD camera</td>
+                      </tr>
+                      <tr>
+                        <th class="py-2">Memory</th>
+                        <td class="py-2">8 GB RAM or 16 GB RAM</td>
+                      </tr>
+                      <tr>
+                        <th class="py-2">Graphics</th>
+                        <td class="py-2">Intel Iris Plus Graphics 640</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    class="tab-pane fade mb-2"
+                    id="ex1-pills-2"
+                    role="tabpanel"
+                    aria-labelledby="ex1-tab-2"
+                  >
+                    Tab content or sample information now <br />
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum. Lorem ipsum dolor sit
+                    amet, consectetur adipisicing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad
+                    minim veniam, quis nostrud exercitation ullamco laboris nisi
+                    ut aliquip ex ea commodo
+                  </div>
+                  <div
+                    class="tab-pane fade mb-2"
+                    id="ex1-pills-3"
+                    role="tabpanel"
+                    aria-labelledby="ex1-tab-3"
+                  >
+                    Another tab content or sample information now <br />
+                    Dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                    ad minim veniam, quis nostrud exercitation ullamco laboris
+                    nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                    dolor in reprehenderit in voluptate velit esse cillum dolore
+                    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                    non proident, sunt in culpa qui officia deserunt mollit anim
+                    id est laborum.
+                  </div>
+                  <div
+                    class="tab-pane fade mb-2"
+                    id="ex1-pills-4"
+                    role="tabpanel"
+                    aria-labelledby="ex1-tab-4"
+                  >
+                    Some other tab content or sample information now <br />
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
+                  </div>
+                </div>
+                {/* <!-- Pills content --> */}
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="px-0 border rounded-2 shadow-0">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Similar items</h5>
+                    <div class="d-flex mb-3">
+                      <a href="#" class="me-3">
+                        <img
+                          src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/8.webp"
+                          style={{minWidth: "96px", height: "96px"}}
+                          class="img-md img-thumbnail"
+                          alt=""
+                        />
+                      </a>
+                      <div class="info">
+                        <a href="#" class="nav-link mb-1">
+                          Rucksack Backpack Large <br />
+                          Line Mounts
+                        </a>
+                        <strong class="text-dark"> $38.90</strong>
+                      </div>
+                    </div>
+
+                    <div class="d-flex mb-3">
+                      <a href="#" class="me-3">
+                        <img
+                          src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/9.webp"
+                          style={{minWidth: "96px", height: "96px"}}
+                          class="img-md img-thumbnail"
+                          alt=""
+                        />
+                      </a>
+                      <div class="info">
+                        <a href="#" class="nav-link mb-1">
+                          Summer New Men's Denim <br />
+                          Jeans Shorts
+                        </a>
+                        <strong class="text-dark"> $29.50</strong>
+                      </div>
+                    </div>
+
+                    <div class="d-flex mb-3">
+                      <a href="#" class="me-3">
+                        <img
+                          src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/10.webp"
+                          style={{minWidth: "96px", height: "96px"}}
+                          class="img-md img-thumbnail"
+                          alt=""
+                        />
+                      </a>
+                      <div class="info">
+                        <a href="#" class="nav-link mb-1">
+                          {" "}
+                          T-shirts with multiple colors, for men and lady{" "}
+                        </a>
+                        <strong class="text-dark"> $120.00</strong>
+                      </div>
+                    </div>
+
+                    <div class="d-flex">
+                      <a href="#" class="me-3">
+                        <img
+                          src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/11.webp"
+                          style={{minWidth: "96px", height: "96px"}}
+                          class="img-md img-thumbnail"
+                          alt=""
+                        />
+                      </a>
+                      <div class="info">
+                        <a href="#" class="nav-link mb-1">
+                          {" "}
+                          Blazer Suit Dress Jacket for Men, Blue color{" "}
+                        </a>
+                        <strong class="text-dark"> $339.90</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-
-      <section id="banner3" class="section-p1">
-        <div class="banner-box">
-          <h2>SEASONAL SALES</h2>
-          <h3>Winter Collection -50% OFF</h3>
-        </div>
-
-        <div class="banner-box banner-img2">
-          <h2>SEASONAL SALES</h2>
-          <h3>Winter Collection -50% OFF</h3>
-        </div>
-
-        <div class="banner-box banner-img3">
-          <h2>SEASONAL SALES</h2>
-          <h3>Winter Collection -50% OFF</h3>
-        </div>
-      </section>
-
-      {/* <section id="newsletter" class="section-p1">
-  <div class="newstext">
-    <h4>Sign Up for Newsletters</h4>
-    <p>Get Email updates about our latest shop and <span> special offers.</span> </p>
-  </div>
-    <div class="form">
-    <input type="text" placeholder="Your email address"/>
-       <button class="btn normal">Sign Up</button>
-    </div>
-   
-  </div>
-  
-</section> */}
-
-      
     </>
   );
 }

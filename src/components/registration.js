@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { confirmRegisterApiUrl, initiateRegisterApiUrl } from "../util/apiUrlList.js";
+import apiUrlList from "../util/apiUrlList.js";
 import { axiosInstanceWithoutAuth } from "../util/axiosInstance";
 import Loading from "./global/loading.js";
 
@@ -31,7 +31,7 @@ function Register() {
         e.preventDefault();
         setShowLoading(true);
         setShowError(false);
-        axiosInstanceWithoutAuth.post(initiateRegisterApiUrl, {
+        axiosInstanceWithoutAuth.post(apiUrlList.initiateRegisterApiUrl, {
             email: formData.email
         }).then((response) => {
             setShowLoading(false);
@@ -60,7 +60,7 @@ function Register() {
         e.preventDefault();
         setShowLoading(true);
         setShowError(false);
-        axiosInstanceWithoutAuth.post(confirmRegisterApiUrl, {
+        axiosInstanceWithoutAuth.post(apiUrlList.confirmRegisterApiUrl, {
             requestId: formData.requestId,
             otp: formData.otp,
             fullName: formData.fullName,
