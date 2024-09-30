@@ -4,16 +4,15 @@ import {
   faSearch,
   faShoppingCart,
   faUser,
-  faUserCircle
+  faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Button, Form, FormControl, Nav, Navbar } from "react-bootstrap";
+import { Button, Dropdown, Form, FormControl, Nav, Navbar } from "react-bootstrap";
 import "../css/header.css";
 
-
 const Header = () => {
-  const isLoggedIn = !!localStorage.getItem('accessToken');
+  const isLoggedIn = !!localStorage.getItem("accessToken");
   return (
     <Navbar
       bg="light"
@@ -38,25 +37,34 @@ const Header = () => {
 
         {/* Right Section - Search and Icons */}
         <div className="d-flex align-items-center">
-          {/* Signin Icon */}
-          {/* Conditional rendering for user icon */}
           {isLoggedIn ? (
-                        <Nav.Link href="/profile" className="mx-2">
-                            <FontAwesomeIcon
-                                icon={faUserCircle}
-                                size="lg"
-                                style={{ color: "#000000" }}
-                            />
-                        </Nav.Link>
-                    ) : (
-                        <Nav.Link href="/login" className="mx-2">
-                            <FontAwesomeIcon
-                                icon={faUser}
-                                size="lg"
-                                style={{ color: "#000000" }}
-                            />
-                        </Nav.Link>
-                    )}
+            <Dropdown>
+              <Dropdown.Toggle
+                id="userDropdown"
+                className="mx-2"
+                variant="link"
+              >
+                <FontAwesomeIcon
+                  icon={faUserCircle}
+                  size="lg"
+                  style={{ color: "#000000" }}
+                />
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item href="/profile">View Profile</Dropdown.Item>
+                <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          ) : (
+            <Nav.Link href="/login" className="mx-2">
+              <FontAwesomeIcon
+                icon={faUser}
+                size="lg"
+                style={{ color: "#000000" }}
+              />
+            </Nav.Link>
+          )}
 
           {/* Wishlist Icon */}
           <Nav.Link href="/wishlist" className="mx-2">
@@ -106,51 +114,59 @@ const Header = () => {
       </div>
     </Navbar>
 
-  // <section id="header">
-  //       <a href="#">
-  //         <img src="https://i.postimg.cc/x8ncvFjr/logo.png" alt="" />
-  //       </a>
-  //       <div>
-  //         <ul id="navbar">
-  //           <li>
-  //             <a href="index.html" class="active">
-  //               Home
-  //             </a>
-  //           </li>
-  //           <li>
-  //             <a href="shop.html">Shop</a>
-  //           </li>
-  //           <li>
-  //             <a href="blog.html">Blog</a>
-  //           </li>
-  //           <li>
-  //             <a href="about.html">About</a>
-  //           </li>
-  //           <li>
-  //             <a href="contact.html">Contact</a>
-  //           </li>
-  //           <li>
-  //             <a href="cart.html" id="lg-bag">
-  //               <FontAwesomeIcon icon={faBagShopping} />
-  //             </a>
-  //             <span class="quantity">0</span>
-  //           </li>
-  //           <li>
-  //             <a href="#" id="close">
-  //               <i class="far fa-times"></i>
-  //             </a>
-  //           </li>
-  //         </ul>
-  //       </div>
-  //       <div id="mobile">
-  //         <a href="cart.html">
-  //           <i class="fal fa-shopping-bag"></i>
-  //           <span class="quantity">0</span>
-  //         </a>
-  //         <i id="bar" class="fas fa-outdent"></i>
-  //       </div>
-  //     </section>
+    // <section id="header">
+    //       <a href="#">
+    //         <img src="https://i.postimg.cc/x8ncvFjr/logo.png" alt="" />
+    //       </a>
+    //       <div>
+    //         <ul id="navbar">
+    //           <li>
+    //             <a href="index.html" class="active">
+    //               Home
+    //             </a>
+    //           </li>
+    //           <li>
+    //             <a href="shop.html">Shop</a>
+    //           </li>
+    //           <li>
+    //             <a href="blog.html">Blog</a>
+    //           </li>
+    //           <li>
+    //             <a href="about.html">About</a>
+    //           </li>
+    //           <li>
+    //             <a href="contact.html">Contact</a>
+    //           </li>
+    //           <li>
+    //             <a href="cart.html" id="lg-bag">
+    //               <FontAwesomeIcon icon={faBagShopping} />
+    //             </a>
+    //             <span class="quantity">0</span>
+    //           </li>
+    //           <li>
+    //             <a href="#" id="close">
+    //               <i class="far fa-times"></i>
+    //             </a>
+    //           </li>
+    //         </ul>
+    //       </div>
+    //       <div id="mobile">
+    //         <a href="cart.html">
+    //           <i class="fal fa-shopping-bag"></i>
+    //           <span class="quantity">0</span>
+    //         </a>
+    //         <i id="bar" class="fas fa-outdent"></i>
+    //       </div>
+    //     </section>
   );
+};
+
+const handleLogout = () => {
+  // Clear JWT tokens or any session storage
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("refreshToken");
+  // Redirect to login page or home
+  window.location.href = "/login";
 };
 
 export default Header;

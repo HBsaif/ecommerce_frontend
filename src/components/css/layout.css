@@ -1,0 +1,36 @@
+/* Layout for Sidebar and Content */
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Main container to hold sidebar and main content */
+.main-container {
+  display: flex;
+  flex-grow: 1;
+  padding-top: 80px; /* Offset for fixed header */
+}
+
+/* Main content styling */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  /* height: calc(100vh - 80px); Full height minus header */
+}
+
+/* Styling for fixed header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+/* Footer Styling */
+footer {
+  position: relative;
+  width: 100%;
+}
