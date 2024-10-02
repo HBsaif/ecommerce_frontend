@@ -3,6 +3,7 @@ import { Toaster } from 'react-hot-toast';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
 import AdminRoute from './components/AdminRoute';
+import CartPage from './pages/CartPage';
 
 // Lazy loading the pages
 const AdminDashboard = lazy(() => import('./pages/AdminDashnoard'));
@@ -21,7 +22,7 @@ function App() {
         position="top-right"
         reverseOrder={false}
         toastOptions={{
-          duration: 2000, // 2 seconds
+          duration: 3000, // 2 seconds
         }}
       />
       <Suspense fallback={<div>Loading...</div>}>
@@ -33,6 +34,7 @@ function App() {
           <Route path="/change-password" element={<ChangePassword />} />
           <Route path="/explore-products" element={<ExploreProducts />} />
           <Route path="/product-details/:productId" element={<ProductDetails />} /> {/* <-- Updated Route */}
+          <Route path="/cart" element={<CartPage />} />
           <Route path="/test" element={<TestPage />} />
         </Routes>
       </Suspense>

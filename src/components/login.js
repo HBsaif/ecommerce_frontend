@@ -28,6 +28,7 @@ function Login() {
         e.preventDefault();
         setShowLoading(true);
         setShowError(false);
+        localStorage.setItem("email", formData.email)
         axiosInstance.post(apiUrlList.loginApiUrl, {
             email: formData.email,
             password: formData.password

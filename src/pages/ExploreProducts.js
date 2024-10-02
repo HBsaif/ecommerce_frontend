@@ -26,8 +26,8 @@ function ExploreProducts() {
         const fetchProducts = async () => {
             try {
                 const response = await axiosInstanceWithoutAuth.get(apiUrlList.getProductsApiUrl);
-                setAllProducts(response.data.content); // Assume the products are in response.data.content
-                setFilteredProducts(response.data.content); // Initially set filtered products to all products
+                setAllProducts(response.data.data.content); // Assume the products are in response.data.content
+                setFilteredProducts(response.data.data.content); // Initially set filtered products to all products
             } catch (error) {
                 console.error("Error fetching products:", error);
             } finally {

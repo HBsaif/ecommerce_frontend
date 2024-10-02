@@ -37,34 +37,6 @@ const Header = () => {
 
         {/* Right Section - Search and Icons */}
         <div className="d-flex align-items-center">
-          {isLoggedIn ? (
-            <Dropdown>
-              <Dropdown.Toggle
-                id="userDropdown"
-                className="mx-2"
-                variant="link"
-              >
-                <FontAwesomeIcon
-                  icon={faUserCircle}
-                  size="lg"
-                  style={{ color: "#000000" }}
-                />
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="/profile">View Profile</Dropdown.Item>
-                <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          ) : (
-            <Nav.Link href="/login" className="mx-2">
-              <FontAwesomeIcon
-                icon={faUser}
-                size="lg"
-                style={{ color: "#000000" }}
-              />
-            </Nav.Link>
-          )}
 
           {/* Wishlist Icon */}
           <Nav.Link href="/wishlist" className="mx-2">
@@ -110,6 +82,36 @@ const Header = () => {
               <FontAwesomeIcon icon={faSearch} />
             </Button>
           </Form>
+
+          {/* Login Icon */}
+          {isLoggedIn ? (
+            <Dropdown>
+              <Dropdown.Toggle
+                id="userDropdown"
+                className="mx-2"
+                variant="link"
+              >
+                <FontAwesomeIcon
+                  icon={faUserCircle}
+                  size="lg"
+                  style={{ color: "#000000" }}
+                />
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item href="/profile">View Profile</Dropdown.Item>
+                <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          ) : (
+            <Nav.Link href="/login" className="mx-2">
+              <FontAwesomeIcon
+                icon={faUser}
+                size="lg"
+                style={{ color: "#000000" }}
+              />
+            </Nav.Link>
+          )}
         </div>
       </div>
     </Navbar>

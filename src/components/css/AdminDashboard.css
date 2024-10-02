@@ -14,8 +14,9 @@
 
 .bg-categories {
   padding: 20px;
-  max-width: 800px;
+  /* max-width: 800px; */
   margin: auto;
+  font-size: 14px;
 }
 
 h2 {
@@ -40,6 +41,16 @@ h2 {
 .category-form input {
   padding: 10px;
   margin-right: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: calc(50% - 10px);
+}
+
+.category-form textarea {
+  padding: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: calc(50% - 10px);
@@ -53,6 +64,15 @@ h2 {
   border-radius: 4px;
   cursor: pointer;
   margin-top: 10px;
+}
+
+.category-form select {
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: calc(50% - 10px);
 }
 
 .category-form button:hover {
@@ -75,8 +95,12 @@ h2 {
   background-color: #f9f9f9;
 }
 
+.edit-del-btn {
+  display: flex;
+}
+
 .category-actions .delete-btn {
-  padding: 5px 10px;
+  padding: 8px 10px;
   margin-left: 5px;
   color: white;
   background-color: #6a6a6a; /* Red for delete */
@@ -87,7 +111,7 @@ h2 {
 
 /* For the Edit button */
 .category-actions .edit-btn {
-  padding: 5px 10px;
+  padding: 8px 10px;
   margin-left: 5px;
   color: white;
   background-color: #787878; /* Green for edit */
@@ -96,6 +120,144 @@ h2 {
   cursor: pointer;
 }
 
+.category-actions .expand-btn {
+  padding: 8px 10px;
+  margin-left: 5px;
+  color: white;
+  background-color: #787878; /* Green for edit */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* CSS for making buttons inline and small */
+.inline-buttons {
+  display: flex;
+  gap: 5px; /* Adjust space between buttons */
+}
+
+.inline-buttons button {
+  padding: 2px 5px; /* Smaller padding for smaller buttons */
+  font-size: 12px; /* Smaller font size */
+  line-height: 1; /* Reduce line height */
+  margin: 0;
+}
+
 .category-actions button:hover {
   background-color: #101010;
+}
+
+.bg-products {
+  padding: 20px;
+}
+
+.product-table {
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+/* CSS for the toggle switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(14px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+thead {
+  background-color: #f5f5f5;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.product-details td {
+  background-color: #f9f9f9;
+}
+
+button {
+  padding: 5px 10px;
+  margin-right: 5px;
+}
+
+button.edit-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+button.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-controls button {
+  padding: 5px 10px;
+  margin: 0 5px;
+}
+
+button.active {
+  font-weight: bold;
+  text-decoration: underline;
 }

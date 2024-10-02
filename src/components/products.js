@@ -18,8 +18,14 @@ function Products({ size = 8, categoryId, handleAddtoWishlist }) {
           params: { page: page - 1, size: size, categoryId: categoryId }, // Pass categoryId as a parameter
         }
       );
-      setProducts(response.data.content);
-      setTotalPages(response.data.totalPages);
+
+      // Filter products to include only those with ACTIVE status
+      const activeProducts = response.data.data.content.filter(
+        (product) => product.status === "ACTIVE"
+      );
+
+      setProducts(activeProducts);
+      setTotalPages(response.data.data.totalPages);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
