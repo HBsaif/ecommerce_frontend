@@ -747,3 +747,7 @@ footer .copyright {
     text-align: start;
   }
 }
+
+.action-btn {
+  margin-top: 8px;
+}

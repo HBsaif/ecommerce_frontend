@@ -1,76 +1,58 @@
-import { faWhatsapp } from "@fortawesome/free-brands-svg-icons"; // Correct import for WhatsApp icon
-import {
-  faHeart,
-  faSearch,
-  faShoppingCart,
-  faUser,
-  faUserCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { Button, Dropdown, Form, FormControl, Nav, Navbar } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Badge, Button, Dropdown, Form, FormControl, Nav, Navbar } from "react-bootstrap";
 import "../css/header.css";
 
-const Header = () => {
-  const isLoggedIn = !!localStorage.getItem("accessToken");
-  return (
-    <Navbar
-      bg="light"
-      expand="lg"
-      className="py-3 fixed-top shadow-sm"
-      style={{ width: "100%" }}
-    >
-      <div className="container d-flex justify-content-between align-items-center">
-        {/* Left Section - Empty */}
-        <div className="d-none d-lg-flex"></div>
+import searchIcon from "../assets/icons/search.svg";
+import cartIcon from "../assets/icons/shopping-cart.svg";
+import userCircleIcon from "../assets/icons/user-circle.svg";
+import userIcon from "../assets/icons/user.svg";
+import whatsappIcon from "../assets/icons/whatsapp.svg";
+import heartIcon from "../assets/icons/wishlist.svg";
 
-        {/* Brand Logo - Center */}
+const Header = () => {
+  const [cartItems, setCartItems] = useState(0);
+
+  const isLoggedIn = !!localStorage.getItem("accessToken");
+
+  // Fetch cartItems from localStorage
+  useEffect(() => {
+    const storedCartItems = localStorage.getItem('cartItems');
+    if (storedCartItems) {
+      setCartItems(parseInt(storedCartItems, 10)); // Update cartItems state
+    }
+  }, []);
+
+  return (
+    <Navbar bg="light" expand="lg" className="py-3 fixed-top shadow-sm" style={{ width: "100%" }}>
+      <div className="container d-flex justify-content-between align-items-center">
+
         <Navbar.Brand href="/" className="mx-auto text-center">
-          <img
-            src="https://i.postimg.cc/x8ncvFjr/logo.png" // Replace with your logo URL
-            alt="Brand Logo"
-            // width="150px"
-            // height="50px"
-            // className="d-inline-block align-top"
-          />
+          <img src="https://i.postimg.cc/x8ncvFjr/logo.png" alt="Brand Logo" />
         </Navbar.Brand>
 
-        {/* Right Section - Search and Icons */}
         <div className="d-flex align-items-center">
-
-          {/* Wishlist Icon */}
           <Nav.Link href="/wishlist" className="mx-2">
-            <FontAwesomeIcon
-              icon={faHeart}
-              size="lg"
-              style={{ color: "#ff4081" }}
-            />
+            <img src={heartIcon} alt="Wishlist" style={{ width: "24px", height: "24px", color: "#ff4081" }} />
           </Nav.Link>
 
-          {/* Cart Icon */}
-          <Nav.Link href="/cart" className="mx-2">
-            <FontAwesomeIcon
-              icon={faShoppingCart}
-              size="lg"
-              style={{ color: "#007bff" }}
-            />
+          <Nav.Link href="/cart" className="mx-2 position-relative">
+            <img src={cartIcon} alt="Cart" style={{ width: "24px", height: "24px", color: "#007bff" }} />
+            {cartItems > 0 && (
+              <Badge pill bg="danger" style={{ position: "absolute", top: "-5px", right: "-10px", fontSize: "0.75rem" }}>
+                {cartItems}
+              </Badge>
+            )}
           </Nav.Link>
 
-          {/* WhatsApp Icon */}
           <Nav.Link
             href="https://wa.me/your-number"
             target="_blank"
             rel="noopener noreferrer"
             className="mx-2"
           >
-            <FontAwesomeIcon
-              icon={faWhatsapp}
-              size="lg"
-              style={{ color: "#25D366" }}
-            />
+            <img src={whatsappIcon} alt="WhatsApp" style={{ width: "24px", height: "24px", color: "#25D366" }} />
           </Nav.Link>
 
-          {/* Search Box */}
           <Form className="d-flex mx-3">
             <FormControl
               type="search"
@@ -79,25 +61,15 @@ const Header = () => {
               style={{ width: "200px" }}
             />
             <Button variant="outline-success">
-              <FontAwesomeIcon icon={faSearch} />
+              <img src={searchIcon} alt="Search" style={{ width: "16px", height: "16px" }} />
             </Button>
           </Form>
 
-          {/* Login Icon */}
           {isLoggedIn ? (
             <Dropdown>
-              <Dropdown.Toggle
-                id="userDropdown"
-                className="mx-2"
-                variant="link"
-              >
-                <FontAwesomeIcon
-                  icon={faUserCircle}
-                  size="lg"
-                  style={{ color: "#000000" }}
-                />
+              <Dropdown.Toggle id="userDropdown" className="mx-2" variant="link">
+                <img src={userCircleIcon} alt="User" style={{ width: "24px", height: "24px" }} />
               </Dropdown.Toggle>
-
               <Dropdown.Menu>
                 <Dropdown.Item href="/profile">View Profile</Dropdown.Item>
                 <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
@@ -105,69 +77,19 @@ const Header = () => {
             </Dropdown>
           ) : (
             <Nav.Link href="/login" className="mx-2">
-              <FontAwesomeIcon
-                icon={faUser}
-                size="lg"
-                style={{ color: "#000000" }}
-              />
+              <img src={userIcon} alt="Login" style={{ width: "24px", height: "24px" }} />
             </Nav.Link>
           )}
         </div>
       </div>
     </Navbar>
-
-    // <section id="header">
-    //       <a href="#">
-    //         <img src="https://i.postimg.cc/x8ncvFjr/logo.png" alt="" />
-    //       </a>
-    //       <div>
-    //         <ul id="navbar">
-    //           <li>
-    //             <a href="index.html" class="active">
-    //               Home
-    //             </a>
-    //           </li>
-    //           <li>
-    //             <a href="shop.html">Shop</a>
-    //           </li>
-    //           <li>
-    //             <a href="blog.html">Blog</a>
-    //           </li>
-    //           <li>
-    //             <a href="about.html">About</a>
-    //           </li>
-    //           <li>
-    //             <a href="contact.html">Contact</a>
-    //           </li>
-    //           <li>
-    //             <a href="cart.html" id="lg-bag">
-    //               <FontAwesomeIcon icon={faBagShopping} />
-    //             </a>
-    //             <span class="quantity">0</span>
-    //           </li>
-    //           <li>
-    //             <a href="#" id="close">
-    //               <i class="far fa-times"></i>
-    //             </a>
-    //           </li>
-    //         </ul>
-    //       </div>
-    //       <div id="mobile">
-    //         <a href="cart.html">
-    //           <i class="fal fa-shopping-bag"></i>
-    //           <span class="quantity">0</span>
-    //         </a>
-    //         <i id="bar" class="fas fa-outdent"></i>
-    //       </div>
-    //     </section>
   );
 };
 
 const handleLogout = () => {
-  // Clear JWT tokens or any session storage
   localStorage.removeItem("accessToken");
   localStorage.removeItem("refreshToken");
-  // Redirect to login page or home
+  localStorage.removeItem("cartItems"); // Clear cartItems on logout
   window.location.href = "/login";
 };
 

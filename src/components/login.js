@@ -28,7 +28,7 @@ function Login() {
         e.preventDefault();
         setShowLoading(true);
         setShowError(false);
-        localStorage.setItem("email", formData.email)
+        localStorage.setItem("email", formData.email);
         axiosInstance.post(apiUrlList.loginApiUrl, {
             email: formData.email,
             password: formData.password
@@ -36,10 +36,11 @@ function Login() {
             setShowLoading(false);
             if (response.data) {
                 if (response.data.status === 'SUCCESS') {
-                    const { accessToken, refreshToken, firstLogin } = response.data.data;
+                    const { accessToken, refreshToken, firstLogin, cartItems } = response.data.data;
                     localStorage.setItem('accessToken', accessToken);
                     localStorage.setItem('refreshToken', refreshToken);
-
+                    localStorage.setItem('cartItems', cartItems); // Store cartItems in localStorage
+    
                     if (firstLogin) {
                         navigate('/change-password'); // Redirect to Change Password if it's the first login
                     } else {
@@ -63,8 +64,8 @@ function Login() {
                 setErrorMessage(err.message);
             }
         });
-    }
-
+    };
+    
     return (
         <Container className="d-flex justify-content-center align-items-center min-vh-100">
             {showLoading && <Loading />}

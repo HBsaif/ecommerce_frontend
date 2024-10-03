@@ -92,7 +92,8 @@ function Details() {
                 className="rounded-4"
                 target="_blank"
                 data-type="image"
-                href={product.imageUrl} // Corrected to use the image URL
+                // href={product.imageUrl} // Corrected to use the image URL
+                href="https://picsum.photos/id/18/500/500"
                 rel="noreferrer"
               >
                 <img
@@ -102,7 +103,8 @@ function Details() {
                     margin: "auto",
                   }}
                   className="rounded-4 fit"
-                  src={product.imageUrl} // Use the product image URL
+                  // src={product.imageUrl} // Use the product image URL
+                  src="https://picsum.photos/id/18/500/500"
                   alt={product.name}
                 />
               </a>
@@ -144,7 +146,7 @@ function Details() {
                 />
                 <button
                   type="button"
-                  className="btn btn-warning shadow-0"
+                  className="btn btn-warning shadow-0 action-btn"
                   onClick={handleAddToCart}
                 >
                   Add to cart
