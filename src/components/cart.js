@@ -7,15 +7,15 @@ function Cart() {
     const [cart, setCart] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [userId, setUserId] = useState(null); // Initialize userId state
+    const [userId, setUserId] = useState(null); 
 
     useEffect(() => {
         const fetchUserId = async () => {
-            const email = localStorage.getItem("email"); // Retrieve user's email from local storage
+            const email = localStorage.getItem("email");
             try {
                 const response = await axiosInstance.get(`/users/id?email=${email}`);
                 if (response.data.status === "SUCCESS") {
-                    setUserId(response.data.data); // Set user ID from response
+                    setUserId(response.data.data); 
                 } else {
                     setError("Could not fetch user ID.");
                 }
@@ -26,13 +26,13 @@ function Cart() {
         };
 
         fetchUserId();
-    }, []); // Run this effect only once when the component mounts
+    }, []);
 
     useEffect(() => {
         const fetchCart = async () => {
-            if (userId === null) return; // Wait until userId is fetched
+            if (userId === null) return; 
             try {
-                setLoading(true); // Set loading to true before API call
+                setLoading(true);
                 const response = await axiosInstance.get(`/api/cart?userId=${userId}`);
 
                 if (response.status !== 200) {
@@ -52,12 +52,60 @@ function Cart() {
                     setError(`Network Error: ${err.message}`);
                 }
             } finally {
-                setLoading(false); // Set loading to false after API call completes
+                setLoading(false);
             }
         };
 
         fetchCart();
-    }, [userId]); // Fetch cart when userId is set
+    }, [userId]);
+
+    // Function to update item quantity
+    const updateItemQuantity = async (itemId, newQuantity) => {
+        try {
+            const response = await axiosInstance.put(`/api/cart/update-item`, {
+                userId,
+                itemId,
+                quantity: newQuantity
+            });
+
+            if (response.data.status === "SUCCESS") {
+                // Update cart state after successful quantity update
+                setCart(prevCart => ({
+                    ...prevCart,
+                    cartItems: prevCart.cartItems.map(item => 
+                        item.id === itemId ? { ...item, quantity: newQuantity } : item
+                    )
+                }));
+            } else {
+                setError(response.data.message);
+            }
+        } catch (err) {
+            console.error("Error updating item quantity:", err);
+            setError("Failed to update item quantity.");
+        }
+    };
+
+    // Function to remove item from cart
+    const removeItem = async (itemId) => {
+        try {
+            const response = await axiosInstance.delete(`/api/cart/remove-item`, {
+                data: { userId, itemId }
+            });
+
+            if (response.data.status === "SUCCESS") {
+                // Update cart state after removing the item
+                setCart(prevCart => ({
+                    ...prevCart,
+                    cartItems: prevCart.cartItems.filter(item => item.id !== itemId)
+                }));
+            } else {
+                setError(response.data.message);
+            }
+        } catch (err) {
+            console.error("Error removing item:", err);
+            setError("Failed to remove item.");
+        }
+    };
 
     // Loading state
     if (loading) return <Loading />;
@@ -83,6 +131,7 @@ function Cart() {
                                 <th>Price at Time</th>
                                 <th>Quantity</th>
                                 <th>Subtotal</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -91,15 +140,32 @@ function Cart() {
                                     <td>{item.name}</td>
                                     <td>
                                         <img 
-                                            // src={item.imageUrl} 
-                                            src="https://picsum.photos/id/1/50/50"
+                                            src="https://picsum.photos/id/1/50/50" 
                                             alt={item.name} 
                                             style={{ width: '50px', height: '50px', objectFit: 'cover' }} 
                                         />
                                     </td>
                                     <td>${item.priceAtTime.toFixed(2)}</td>
-                                    <td>{item.quantity}</td>
+                                    <td>
+                                        <button 
+                                            onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
+                                            disabled={item.quantity <= 1}
+                                        >
+                                            -
+                                        </button>
+                                        {item.quantity}
+                                        <button 
+                                            onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
+                                        >
+                                            +
+                                        </button>
+                                    </td>
                                     <td>${(item.priceAtTime * item.quantity).toFixed(2)}</td>
+                                    <td>
+                                        <button onClick={() => removeItem(item.id)}>
+                                            Remove
+                                        </button>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
