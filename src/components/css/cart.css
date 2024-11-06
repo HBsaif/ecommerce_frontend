@@ -63,3 +63,40 @@
   color: #999; /* Gray text */
   margin-top: 40px; /* Space above the message */
 }
+
+
+/* Quantity Buttons */
+.table button {
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white; /* White text color */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Rounded corners */
+  width: 22px; /* Fixed width */
+  height: 22px; /* Fixed height */
+  font-size: 1em; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin: 0 5px; /* Spacing between buttons */
+}
+
+.table button:disabled {
+  background-color: #cccccc; /* Gray color for disabled state */
+  cursor: not-allowed; /* Show not-allowed cursor */
+}
+
+/* .table button:hover:not(:disabled) {
+  background-color: #0056b3; 
+} */
+
+/* Remove Button (Trash Icon) */
+.table .remove-button {
+  background-color: transparent; /* Transparent background */
+  color: #dc3545; /* Red color */
+  border: none; /* Remove border */
+  cursor: pointer; /* Pointer cursor */
+  font-size: 1.2em; /* Slightly larger icon */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.table .remove-button:hover {
+  color: #c82333; 
+}

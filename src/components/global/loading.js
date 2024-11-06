@@ -1,4 +1,5 @@
 import React from "react";
+import '../css/global.css';
 
 function Loading() {
     return (
